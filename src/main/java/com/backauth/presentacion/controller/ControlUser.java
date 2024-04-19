@@ -3,6 +3,7 @@ package com.backauth.presentacion.controller;
 import com.backauth.aplicacion.ServiceUser;
 import com.backauth.core.dominio.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -20,9 +21,14 @@ public class ControlUser {
     }
 
     @PostMapping("/save")
-    public  User save(@RequestBody User user)
+    public ResponseEntity<User> save(@RequestBody User user)
     {
         return serviceUser.save(user);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<User> update(@RequestBody User user){
+        return serviceUser.update(user);
     }
 
     @DeleteMapping("/delete/{id}")

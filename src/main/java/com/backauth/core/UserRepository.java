@@ -22,6 +22,11 @@ public class UserRepository {
         return (User) userCrudRepository.save(user);
     }
 
+    public User update(User user)
+    {
+        return (User) userCrudRepository.save(user);
+    }
+
     public void delete(int userId)
     {
         userCrudRepository.deleteById(userId);
