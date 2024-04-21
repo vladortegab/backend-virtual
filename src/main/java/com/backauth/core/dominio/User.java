@@ -1,13 +1,19 @@
 package com.backauth.core.dominio;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
+
+@Builder
 @Entity
 @Table(name = "USERS")
-public class User {
+public class User implements UserDetails {
     @Id
     @Column(name = "user_id")
-    private Integer userId;
+    private String userId;
 
     @Column(name = "user_id_type")
     private String userIdTipe;
@@ -34,11 +40,11 @@ public class User {
     @JoinColumn(name = "role_id", insertable = false, updatable = false)
     private Roles roles;
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -96,5 +102,40 @@ public class User {
 
     public void setUserRole(Integer userRole) {
         this.userRole = userRole;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
     }
 }

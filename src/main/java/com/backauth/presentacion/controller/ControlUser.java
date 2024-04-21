@@ -15,7 +15,7 @@ public class ControlUser {
     private ServiceUser serviceUser;
 
     @GetMapping("/{id}")
-    public Optional<User> getUser(@PathVariable("id") int userId)
+    public Optional<User> getUser(@PathVariable("id") String userId)
     {
         return serviceUser.getUser(userId);
     }
@@ -32,7 +32,7 @@ public class ControlUser {
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean delete(@PathVariable("id") int userId)
+    public boolean delete(@PathVariable("id") String userId)
     {
         return serviceUser.delete(userId);
     }

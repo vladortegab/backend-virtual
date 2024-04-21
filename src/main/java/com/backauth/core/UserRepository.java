@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public class UserRepository {
+public class UserRepository{
     @Autowired
     private UserCrudRepository userCrudRepository;
 
-    public Optional<User> getUser(int userId)
+    public Optional<User> getUser(String userId)
     {
         return userCrudRepository.findById(userId);
     }
@@ -27,8 +27,12 @@ public class UserRepository {
         return (User) userCrudRepository.save(user);
     }
 
-    public void delete(int userId)
+    public void delete(String userId)
     {
         userCrudRepository.deleteById(userId);
+    }
+
+    public Optional<User> findByUserEmail(String userEmail) {
+        return userCrudRepository.findByUserEmail(userEmail);
     }
 }

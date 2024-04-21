@@ -15,7 +15,7 @@ public class ServiceUser {
     @Autowired
     private UserRepository userRepository;
 
-    public Optional<User> getUser(int userId)
+    public Optional<User> getUser(String userId)
     {
         return userRepository.getUser(userId);
     }
@@ -38,7 +38,7 @@ public class ServiceUser {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    public boolean delete(int userId)
+    public boolean delete(String userId)
     {
         return getUser(userId).map(user -> {
             userRepository.delete(userId);
