@@ -4,7 +4,6 @@ import com.backauth.core.UserRepository;
 import com.backauth.core.dominio.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +25,7 @@ public class ServiceUser {
             return new ResponseEntity<>(userRepository.save(user), HttpStatus.CREATED);
         }
 
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
     }
 
