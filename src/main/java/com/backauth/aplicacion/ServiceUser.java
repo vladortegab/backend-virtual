@@ -37,6 +37,8 @@ public class ServiceUser {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
+
+
     public boolean delete(String userId)
     {
         return getUser(userId).map(user -> {
@@ -44,4 +46,10 @@ public class ServiceUser {
             return true;
         }).orElse(false);
     }
+
+    public Optional<User> getUserEmail(String userEmail)
+    {
+        return userRepository.findByUserEmail(userEmail);
+    }
+
 }
